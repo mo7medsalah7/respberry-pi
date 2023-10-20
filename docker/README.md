@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Initializing the Docker Container](#inityaml)
+- [Docker Compose](#docker-compose)
 - [Services](#Services)
   - [vscode ](#1-vscode-service)
     - [Dockerfile](#this-is-the-dockerfile-for-the-vscode-service)
@@ -15,7 +16,6 @@
 ---
 
 ## init.yaml
-The **`init.yaml`** file is a configuration file used for initializing the Docker container.
 
 ```version: '3'
 services:
@@ -28,8 +28,97 @@ services:
       - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
 ```
 
+## Docker Compose
+
+```
+version: "3"
+
+services:
+  vscode:
+    build:
+      context: vscode
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      # volume used to access the `notebooks` folder
+      - ../notebooks:/home/coder/project
+
+    environment:
+      - PASSWORD=yourpassword
+    devices:
+    # I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.
+      - "/dev/i2c-1:/dev/i2c-1"
+      - "/dev/ttyUSB1:/dev/ttyUSB1"
+      - "/dev/ttyUSB2:/dev/ttyUSB2"
+
+  grafana:
+    image: grafana/grafana:9.5.1
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/datasources/:/etc/grafana/provisioning/datasources/
+      - ./grafana/provisioning/dashboards/:/etc/grafana/provisioning/dashboards/
+      - ./grafana/dashboards:/etc/dashboards
+    depends_on:
+      - questdb
+    environment:
+      - GRAFANA_QUESTDB_PASSWORD=quest
+      - GF_INSTALL_PLUGINS=pr0ps-trackmap-panel
+
+  questdb:
+    image: questdb/questdb:7.3
+    ports:
+      - "9000:9000"
+      - "9009:9009"
+      - "8812:8812"
+      - "9003:9003"
+    volumes:
+      - questdb-data:/root/.questdb
+    environment:
+      - QDB_PG_USER=admin
+      - QDB_PG_PASSWORD=quest
+
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d/default.conf.template:/etc/nginx/conf.d/default.conf.template
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
+      - ./nginx/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./nginx/nginx.env
+    command: /bin/bash -c "envsubst '$$DOMAIN' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+    depends_on:
+      - vscode
+      - grafana
+      - questdb
+
+  # Refer to ./init.yaml to for initial SSL setup
+  # add the following line in in crontab (5 am, every monday)
+  #   0 5 * * 1 docker compose run certbot renew
+  certbot:
+    image: certbot/certbot
+    ports: []
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
+
+
+volumes:
+  grafana-data:
+  questdb-data:
+```
+
 ## Services
-### docker-compose.yaml 
 
 ## 1. vscode Service:
 
