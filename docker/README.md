@@ -5,8 +5,7 @@
 - [Initializing the Docker Container](#inityaml)
 - [Services](#Services)
   - [vscode ](#1-vscode-service)
-  - [grafana Folder](#grafana-folder)
-  - [nginx Folder](#nginx-folder)
+  - [nginx Folder](#2-nginx-service)
   
 ---
 
@@ -28,6 +27,8 @@ services:
 ### docker-compose.yaml 
 
 ## 1. vscode Service:
+
+* This is the `Dockerfile` for the vscode service
 
 ```
 # Use the specified base image
@@ -60,21 +61,17 @@ USER coder
 RUN code-server --install-extension ms-toolsai.jupyter@2023.4.1001091014 \
                 --install-extension ms-toolsai.vscode-jupyter-powertoys \
                 --install-extension ms-python.python
+```
+
+## 2. Nginx Service.
+
+```
+
+
 
 
 
 ```
-
-## 2. Questdb Service.
-
-QuestDB is a high-performance, open-source time series database. It is designed to handle large volumes of time-stamped data efficiently. QuestDB is often used for applications such as real-time monitoring, analytics, and logging.
-
-The `questdb` service in your Docker Compose file defines a QuestDB container. The following sections explain the different components of the service:
-
-* `image` Specifies the QuestDB Docker image to use. In this case, the `questdb/questdb:7.3` image is used.
-* `ports` Maps the container's ports to the host's ports. This allows you to access the QuestDB database from the host machine.
-* `volumes` Mounts a host directory to a directory inside the container. This allows you to store QuestDB data on the host machine.
-* `environment` Sets environment variables for QuestDB. In this case, the `QDB_PG_USER` and `QDB_PG_PASSWORD` environment variables are set.
 
 
 ## Grafana
