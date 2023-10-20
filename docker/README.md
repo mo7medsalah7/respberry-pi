@@ -28,7 +28,7 @@ services:
       - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
 ```
 
-## Docker Compose
+## docker-compose.yaml
 
 ```
 version: "3"
