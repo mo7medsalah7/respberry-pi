@@ -37,16 +37,16 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 
 * You can access it independently port *8080* on your host [localhost:8080](http://localhost:8080).
 
-`build`: Specifies the build context and Dockerfile location for the service.
+* `build`: Specifies the build context and Dockerfile location for the service.
 
-`ports`: Maps the host port 8080 to the container port 8080.
+* `ports`: Maps the host port 8080 to the container port 8080.
 
-`volumes`: Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container. Volume used to access the `notebooks` folder.
+* `volumes`: Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container. Volume used to access the `notebooks` folder.
 
-`environment`: Sets the environment variable 
+* `environment`: Sets the environment variable 
              - :lock: **PASSWORD** to **yourpassword**.
 
-`devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
+* `devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
 
    - *I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.*
 
@@ -56,10 +56,10 @@ QuestDB is a high-performance, open-source time series database. It is designed 
 
 The `questdb` service in your Docker Compose file defines a QuestDB container. The following sections explain the different components of the service:
 
-* **image:** Specifies the QuestDB Docker image to use. In this case, the `questdb/questdb:7.3` image is used.
-* **ports:** Maps the container's ports to the host's ports. This allows you to access the QuestDB database from the host machine.
-* **volumes:** Mounts a host directory to a directory inside the container. This allows you to store QuestDB data on the host machine.
-* **environment:** Sets environment variables for QuestDB. In this case, the `QDB_PG_USER` and `QDB_PG_PASSWORD` environment variables are set.
+* `image` Specifies the QuestDB Docker image to use. In this case, the `questdb/questdb:7.3` image is used.
+* `ports` Maps the container's ports to the host's ports. This allows you to access the QuestDB database from the host machine.
+* `volumes` Mounts a host directory to a directory inside the container. This allows you to store QuestDB data on the host machine.
+* `environment` Sets environment variables for QuestDB. In this case, the `QDB_PG_USER` and `QDB_PG_PASSWORD` environment variables are set.
 
 
 ## Grafana
