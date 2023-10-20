@@ -5,8 +5,10 @@ This markdown file provides an overview of the contents of the Docker folder in 
 ## Table of Contents
 
 - [Initializing the Docker Container](#inityaml)
-- [Services](#Services): [vscode](#1-vscode-service), [grafana Folder](#grafana-folder), [nginx Folder](#nginx-folder)
-
+- [Services](#Services)
+  - [vscode ](#1-vscode-service)
+  - [grafana Folder](#grafana-folder)
+  - [nginx Folder](#nginx-folder)
   
 ---
 
