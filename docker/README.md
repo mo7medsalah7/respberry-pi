@@ -25,6 +25,14 @@ This **init.yaml** file provides the necessary configuration for the certbot ser
 ## Services
 ### docker-compose.yaml 
 
+Docker Compose is a tool that helps you define and run multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. Then, with a single command, you create and start all the services from your configuration.
+
+
+
+- Run the following command, This will create and start all of the services defined in the docker-compose.yaml file.
+
+`docker-compose up -d`
+
 
 ## Grafana
 
