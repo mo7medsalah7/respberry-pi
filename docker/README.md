@@ -41,12 +41,7 @@ You can access it independently port *8080* on your host [localhost:8080](http:/
 
 `ports`: Maps the host port 8080 to the container port 8080.
 
-`volumes`: - Mounts the ../notebooks directory on the host to /home/coder/project inside the container.
-           - volume used to access the `notebooks` folder
-
-## Volumes
-
-* Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container.
+`volumes`: * Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container.
 * Volume used to access the `notebooks` folder.
 
 `environment`: Sets the environment variable 
