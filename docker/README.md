@@ -5,9 +5,8 @@ This markdown file provides an overview of the contents of the Docker folder in 
 ## Table of Contents
 
 - [Initializing the Docker Container](#inityaml)
-- [Dockerfile](#dockerfile)
-- [grafana Folder](#grafana-folder)
-- [nginx Folder](#nginx-folder)
+- [Services](#Services): [vscode](#1-vscode-service), [grafana Folder](#grafana-folder), [nginx Folder](#nginx-folder)
+
   
 ---
 
@@ -40,8 +39,7 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 
 `ports`: Maps the host port 8080 to the container port 8080.
 
-`volumes`: Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container.
-** Volume used to access the `notebooks` folder.
+`volumes`: Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container. Volume used to access the `notebooks` folder.
 
 `environment`: Sets the environment variable 
              - :lock: **PASSWORD** to **yourpassword**.
