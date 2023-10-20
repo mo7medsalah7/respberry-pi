@@ -28,11 +28,17 @@ This **init.yaml** file provides the necessary configuration for the certbot ser
 Docker Compose is a tool that helps you define and run multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. Then, with a single command, you create and start all the services from your configuration.
 
 
-
 - Run the following command, This will create and start all of the services defined in the docker-compose.yaml file.
 
 `docker-compose up -d`
 
+### vscode Service:
+
+`build`: Specifies the build context and Dockerfile location for the service.
+`ports`: Maps the host port 8080 to the container port 8080.
+`volumes`: Mounts the ../notebooks directory on the host to /home/coder/project inside the container.
+`environment`: Sets the environment variable PASSWORD to yourpassword.
+`devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
 
 ## Grafana
 
