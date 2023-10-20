@@ -48,7 +48,7 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 
 `devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
 
-   *I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.*
+   - *I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.*
 
 
 ## Grafana
