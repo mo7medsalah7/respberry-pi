@@ -50,6 +50,17 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 
    - *I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.*
 
+## 2. Questdb Service.
+
+QuestDB is a high-performance, open-source time series database. It is designed to handle large volumes of time-stamped data efficiently. QuestDB is often used for applications such as real-time monitoring, analytics, and logging.
+
+The `questdb` service in your Docker Compose file defines a QuestDB container. The following sections explain the different components of the service:
+
+* **image:** Specifies the QuestDB Docker image to use. In this case, the `questdb/questdb:7.3` image is used.
+* **ports:** Maps the container's ports to the host's ports. This allows you to access the QuestDB database from the host machine.
+* **volumes:** Mounts a host directory to a directory inside the container. This allows you to store QuestDB data on the host machine.
+* **environment:** Sets environment variables for QuestDB. In this case, the `QDB_PG_USER` and `QDB_PG_PASSWORD` environment variables are set.
+
 
 ## Grafana
 
