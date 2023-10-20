@@ -32,7 +32,7 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 
 `docker-compose up -d`
 
-### 1. vscode Service:
+## 1. vscode Service:
 - Accessing the vscode service.
 
 You can access it independently port *8080* on your host [localhost:8080](http://localhost:8080).
@@ -44,14 +44,17 @@ You can access it independently port *8080* on your host [localhost:8080](http:/
 `volumes`: - Mounts the ../notebooks directory on the host to /home/coder/project inside the container.
            - volume used to access the `notebooks` folder
 
+## Volumes
+
+* Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container.
+* Volume used to access the `notebooks` folder.
 
 `environment`: Sets the environment variable 
              - :lock: **PASSWORD** to **yourpassword**.
 
 `devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
 
-*I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.
-*
+*I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.*
 
 
 ## Grafana
