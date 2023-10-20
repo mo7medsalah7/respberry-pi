@@ -35,7 +35,7 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 ## 1. vscode Service:
 - Accessing the vscode service.
 
-You can access it independently port *8080* on your host [localhost:8080](http://localhost:8080).
+* You can access it independently port *8080* on your host [localhost:8080](http://localhost:8080).
 
 `build`: Specifies the build context and Dockerfile location for the service.
 
