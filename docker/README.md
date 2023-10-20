@@ -6,6 +6,7 @@
 - [Services](#Services)
   - [vscode ](#1-vscode-service)
     - [Dockerfile](#this-is-the-dockerfile-for-the-vscode-service)
+    - [requirements.txt](#requirementstxt)
   - [nginx Folder](#2-nginx-service)
     - [nginx.conf](#nginxconf-file)
     - [nginx.env](#nginxenv-file)
@@ -65,6 +66,26 @@ USER coder
 RUN code-server --install-extension ms-toolsai.jupyter@2023.4.1001091014 \
                 --install-extension ms-toolsai.vscode-jupyter-powertoys \
                 --install-extension ms-python.python
+```
+
+### **requirements.txt**
+
+```
+# <- Comment or uncomment based on the application
+
+#some-weatherstation-package==x.y.z   <- Comment or uncomment based on the application
+bme680==1.1.1   
+psycopg2-binary==2.9.7
+
+
+# some-healthcare-package==x.y.z   <- Comment or uncomment based on the application
+
+# some-GPStracker-package==x.y.z   <- Comment or uncomment based on the application
+openrouteservice==2.3.3
+pyserial==3.5
+
+# some-MarketData-package==x.y.z   <- Comment or uncomment based on the application
+ websocket-client==1.6.3
 ```
 
 ## 2. Nginx Service.
