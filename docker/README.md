@@ -27,29 +27,43 @@ services:
 ## Services
 ### docker-compose.yaml 
 
-Docker Compose is a tool that helps you define and run multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. Then, with a single command, you create and start all the services from your configuration.
-
-
-- Run the following command, This will create and start all of the services defined in the docker-compose.yaml file.
-
-`docker-compose up -d`
-
 ## 1. vscode Service:
 
-* You can access it independently port *8080* on your host [localhost:8080](http://localhost:8080).
+```
+# Use the specified base image
+FROM codercom/code-server:4.16.1
 
-* `build`: Specifies the build context and Dockerfile location for the service.
+# Switch to root user for permissions
+USER root
 
-* `ports`: Maps the host port 8080 to the container port 8080.
+# Update, and install python3-dev and python3-pip
+RUN apt-get update && apt-get install -y python3-dev python3-pip
 
-* `volumes`: Mounts the `../notebooks` directory on the host to `/home/coder/project` inside the container. Volume used to access the `notebooks` folder.
+# Copy the requirements file to the container
+COPY requirements.txt /tmp/
 
-* `environment`: Sets the environment variable 
-             - :lock: **PASSWORD** to **yourpassword**.
+# Install Python packages from the requirements file
+RUN python3 -m pip install -r /tmp/requirements.txt
 
-* `devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
+# Additional setup (e.g., group and user modifications)
+# Replace 995 with the gid you find for the I2C Interface
+RUN groupadd -g 995 i2cgroup
+RUN usermod -aG i2cgroup coder
 
-   - *I2C and Serial Interfaces for respectively BME680 sensor and QUECTEL EG25-G 4G HAT cellular device.*
+# Add the coder user to the dialout group for GPS communication with serial port /dev/ttyUSB*
+RUN usermod -aG dialout coder
+
+# Switch to coder user
+USER coder
+
+# Install the Visual Studio Code extensions
+RUN code-server --install-extension ms-toolsai.jupyter@2023.4.1001091014 \
+                --install-extension ms-toolsai.vscode-jupyter-powertoys \
+                --install-extension ms-python.python
+
+
+
+```
 
 ## 2. Questdb Service.
 
