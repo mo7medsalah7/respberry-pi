@@ -42,7 +42,7 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 `volumes`: Mounts the ../notebooks directory on the host to /home/coder/project inside the container.
 
 `environment`: Sets the environment variable 
-             - :lock: PASSWORD to ##yourpassword##.
+             - :lock: PASSWORD to ==yourpassword==.
 
 `devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
 
