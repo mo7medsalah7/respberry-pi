@@ -33,12 +33,19 @@ Docker Compose is a tool that helps you define and run multi-container Docker ap
 `docker-compose up -d`
 
 ### vscode Service:
+- Accessing the vscode service
 
 `build`: Specifies the build context and Dockerfile location for the service.
+
 `ports`: Maps the host port 8080 to the container port 8080.
+
 `volumes`: Mounts the ../notebooks directory on the host to /home/coder/project inside the container.
-`environment`: Sets the environment variable PASSWORD to yourpassword.
+
+`environment`: Sets the environment variable 
+             - :lock: PASSWORD to ##yourpassword##.
+
 `devices`: Maps host devices /dev/i2c-1, /dev/ttyUSB1, and /dev/ttyUSB2 to the corresponding devices inside the container.
+
 
 ## Grafana
 
