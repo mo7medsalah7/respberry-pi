@@ -22,7 +22,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/lib/letsencrypt:/var/lib/letsencrypt
       - ./nginx/.well-known/:/usr/share/nginx/html/.well-known/
-      ```
+```
 
 ## Services
 ### docker-compose.yaml 
