@@ -5,7 +5,10 @@
 - [Initializing the Docker Container](#inityaml)
 - [Services](#Services)
   - [vscode ](#1-vscode-service)
+    - [Dockerfile](#this-is-the-dockerfile-for-the-vscode-service)
   - [nginx Folder](#2-nginx-service)
+    - [nginx.conf](#nginxconf-file)
+    - [nginx.env](#nginxenv-file)
   
 ---
 
@@ -28,7 +31,7 @@ services:
 
 ## 1. vscode Service:
 
-* This is the `Dockerfile` for the vscode service
+### This is the `Dockerfile` for the vscode service
 
 ```
 # Use the specified base image
@@ -65,7 +68,7 @@ RUN code-server --install-extension ms-toolsai.jupyter@2023.4.1001091014 \
 
 ## 2. Nginx Service.
 
-* nginx.conf file
+### **nginx.conf** file
 
 ```
 # /etc/nginx/nginx.conf
@@ -104,7 +107,12 @@ http {
 }
 ```
 
+### **nginx.env** file
+```
+# nginx/nginx.env
 
+DOMAIN=yourdomain
+```
 ## Grafana
 
 
